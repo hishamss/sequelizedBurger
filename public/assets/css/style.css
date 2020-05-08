@@ -1,0 +1,70 @@
+body {
+  background-color: #5f597f;
+  margin: 0;
+  padding: 0;
+  font-family: "Fjalla One", sans-serif;
+}
+
+.toDevour {
+  color: #5f597f;
+}
+
+.devourDiv {
+  color: #5f597f;
+  opacity: 0.6;
+}
+[type="submit"] {
+  background: #f6ca67;
+  color: #5f597f;
+  border-radius: 13px;
+  border-color: #5f597f !important;
+  font-size: 1.7rem;
+  width: 120px;
+}
+
+[type="submit"]:hover {
+  font-size: 1.9rem;
+  background: #f6ca67 !important;
+  color: #5f597f;
+}
+
+input[type="text"] {
+  height: 56px !important;
+  border-radius: 13px;
+  color: #5f597f !important;
+}
+
+input[type="text"]::placeholder {
+  color: #5f597f;
+  opacity: 0.3;
+}
+
+[type="submit"]:active {
+  background: #ee2d24 !important;
+  color: #5f597f !important;
+}
+
+.card {
+  background-color: #f6ca67;
+  border-radius: 1.25rem !important;
+}
+
+.card-header {
+  color: #5f597f;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+.fa-times-circle:hover {
+  color: #9ece37;
+}
+
+.fa-utensils:hover {
+  color: #9ece37;
+}
+
+.legends {
+  color: #9ece37;
+}

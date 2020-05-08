@@ -1,0 +1,75 @@
+<div class="container" style="margin-top:100px;">
+    <div class="row">
+        <div class="col-md-4 ">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h3>Burgers To Devour</h3>
+                </div>
+                <div class="card-body">
+
+                    {{#each burger}}
+                    {{#unless devoured}}
+                    <div class="toDevour" id={{id}}>
+                        <i class="fas fa-hamburger"></i>
+                        <p style="display: inline-block;">{{burger_name}}</p>&nbsp &nbsp &nbsp
+                        <i class="fas fa-utensils devour" data-id={{id}} data-toggle="tooltip" data-placement="top"
+                            title="Devour It"></i>&nbsp
+                        <i class="fas fa-times-circle remove" data-id={{id}} data-toggle="tooltip" data-placement="top"
+                            title="Delete Burger"></i>
+                    </div>
+
+                    {{/unless}}
+                    {{/each}}
+
+                </div>
+            </div>
+
+
+        </div>
+        <div class="col-md-4 "><img class="img-fluid" src="/assets/media/logo.jpg"></div>
+        <div class="col-md-4 ">
+            <div class="card shadow">
+                <div class="card-header text-center">
+                    <h3>Devoured Burgers</h3>
+                </div>
+                <div class="card-body devourDiv">
+                    {{#each burger}}
+                    {{#if devoured}}
+                    <div>
+                        <i class="fas fa-hamburger"></i>
+                        <p style="display: inline-block;">{{burger_name}}</p>
+                    </div>
+                    {{/if}}
+                    {{/each}}
+
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    <div class="row"></div>
+    <div class="row mt-5">
+        <div class="col-md-4 offset-md-4 ">
+            <form class="form-inline justify-content-center" id="addburger">
+                <div class="form-group mr-2">
+                    <input id="newburger" type="text" class="form-control" placeholder="Add Burger to Devour"
+                        autocomplete="off">
+                </div>
+                <button type="submit" class="btn btn-primary"><strong>Add</strong></button>
+            </form>
+            <br>
+            <div class="text-center legends">
+                <i class="fas fa-utensils devour"></i>
+                <p style="display: inline-block;">: Devour Burger</p>
+            </div>
+            <div class="text-center legends">
+                <i class="fas fa-times-circle remove"></i>
+                <p style="display: inline-block;">: Delete Burger</p>
+            </div>
+        </div>
+
+    </div>
+
+</div>
