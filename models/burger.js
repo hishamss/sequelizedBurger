@@ -3,7 +3,10 @@ module.exports = function (sequelize, DataTypes) {
     "burgers",
     {
       burger_name: DataTypes.STRING,
-      devoured: DataTypes.BOOLEAN,
+      devoured: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false,
+      },
     },
     {
       timestamps: false,
