@@ -10,19 +10,37 @@ $("#addburger").on("submit", function (event) {
     location.reload();
   });
 });
+$(".customer").on("click", function () {
+  IdToDevour = $(this).data("id");
+  DevouredBurger = $("#" + IdToDevour + "> p").text();
+  $("#customerName").val("");
+  $(".modal").show();
+});
+
+$(".close").on("click", function () {
+  $(".modal").hide();
+});
+
 $(".devour").on("click", function () {
-  var id = $(this).data("id");
-  var BurgerName = $("#" + id + "> p").text();
-  $.ajax("/api/burger/" + id, {
+  var Nameof = $("#customerName").val().trim();
+  var toPostObj = {
+    name: Nameof,
+    burger_name: DevouredBurger,
+  };
+  $.ajax("/api/burger/" + IdToDevour, {
     type: "PUT",
+    data: toPostObj,
   }).then(function () {
     console.log("updated");
-    $("#" + id).remove();
+    $("#" + IdToDevour).remove();
     $(".devourDiv").append(
       '<div><i class="fas fa-hamburger"></i>&nbsp<p style="display: inline-block;">' +
-        BurgerName +
-        "</p></div>"
+        DevouredBurger +
+        "(Eaten by " +
+        Nameof +
+        ")</p></div>"
     );
+    $(".modal").hide();
   });
 });
 

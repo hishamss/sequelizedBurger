@@ -13,7 +13,25 @@ body {
   color: #5f597f;
   opacity: 0.6;
 }
-[type="submit"] {
+
+.devour {
+  background: #f6ca67;
+  color: #5f597f;
+  border-radius: 13px;
+  border-color: #5f597f !important;
+}
+
+.devour:hover {
+  background: #f6ca67 !important;
+  color: #5f597f;
+}
+
+.devour:active {
+  background: #ee2d24 !important;
+  color: #5f597f !important;
+}
+
+.addbtn {
   background: #f6ca67;
   color: #5f597f;
   border-radius: 13px;
@@ -22,24 +40,40 @@ body {
   width: 120px;
 }
 
-[type="submit"]:hover {
+.addbtn:hover {
   font-size: 1.9rem;
   background: #f6ca67 !important;
   color: #5f597f;
 }
 
-input[type="text"] {
+#newburger {
   height: 56px !important;
   border-radius: 13px;
   color: #5f597f !important;
 }
 
-input[type="text"]::placeholder {
+#customerName {
+  color: #5f597f !important;
+  border-radius: 13px !important;
+  width: auto !important;
+  display: inline-block !important;
+}
+
+.modal {
+  border-radius: 13px;
+}
+
+#newburger::placeholder {
   color: #5f597f;
   opacity: 0.3;
 }
 
-[type="submit"]:active {
+#customerName::placeholder {
+  color: #5f597f !important;
+  opacity: 0.3 !important;
+}
+
+.addbtn:active {
   background: #ee2d24 !important;
   color: #5f597f !important;
 }

@@ -12,7 +12,7 @@
                     <div class="toDevour" id={{id}}>
                         <i class="fas fa-hamburger"></i>
                         <p style="display: inline-block;">{{burger_name}}</p>&nbsp &nbsp &nbsp
-                        <i class="fas fa-utensils devour" data-id={{id}} data-toggle="tooltip" data-placement="top"
+                        <i class="fas fa-utensils customer" data-id={{id}} data-toggle="tooltip" data-placement="top"
                             title="Devour It"></i>&nbsp
                         <i class="fas fa-times-circle remove" data-id={{id}} data-toggle="tooltip" data-placement="top"
                             title="Delete Burger"></i>
@@ -33,13 +33,11 @@
                     <h3>Devoured Burgers</h3>
                 </div>
                 <div class="card-body devourDiv">
-                    {{#each burger}}
-                    {{#if devoured}}
+                    {{#each cutomers}}
                     <div>
                         <i class="fas fa-hamburger"></i>
-                        <p style="display: inline-block;">{{burger_name}}</p>
+                        <p style="display: inline-block;">{{burger_name}}(Eaten by {{name}})</p>
                     </div>
-                    {{/if}}
                     {{/each}}
 
 
@@ -57,11 +55,11 @@
                     <input id="newburger" type="text" class="form-control" placeholder="Add Burger to Devour"
                         autocomplete="off">
                 </div>
-                <button type="submit" class="btn btn-primary"><strong>Add</strong></button>
+                <button type="submit" class="btn btn-primary addbtn"><strong>Add</strong></button>
             </form>
             <br>
             <div class="text-center legends">
-                <i class="fas fa-utensils devour"></i>
+                <i class="fas fa-utensils"></i>
                 <p style="display: inline-block;">: Devour Burger</p>
             </div>
             <div class="text-center legends">
@@ -71,5 +69,24 @@
         </div>
 
     </div>
+    <div class="modal shadow">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-body">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <br>
+                    <div class="form-group text-center">
+                        <input class="form-control" type="text" id="customerName" placeholder="Devoured By"
+                            autocomplete="off">
+                        <button class="btn btn-primary devour"><strong>Submit</strong></button>
+                    </div>
 
+                </div>
+            </div>
+        </div>
+
+
+    </div>
 </div>

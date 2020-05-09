@@ -9,7 +9,13 @@ router.get("/", function (req, res) {
     for (row of result) {
       resArray.push(row.dataValues);
     }
-    res.render("index", { burger: resArray });
+    db.customers.findAll({}).then(function (data) {
+      var resData = [];
+      for (row of data) {
+        resData.push(row.dataValues);
+      }
+      res.render("index", { burger: resArray, cutomers: resData });
+    });
   });
 });
 
@@ -24,6 +30,7 @@ router.post("/api/burger", function (req, res) {
 });
 
 router.put("/api/burger/:id", function (req, res) {
+  console.log("id: ", req.params.id);
   db.burgers
     .update(
       {
@@ -34,7 +41,14 @@ router.put("/api/burger/:id", function (req, res) {
       }
     )
     .then(function () {
-      res.status(200).end();
+      db.customers
+        .create({
+          name: req.body.name,
+          burger_name: req.body.burger_name,
+        })
+        .then(function () {
+          res.status(200).end();
+        });
     });
 });
 
