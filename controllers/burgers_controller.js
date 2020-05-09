@@ -23,18 +23,28 @@ router.post("/api/burger", function (req, res) {
     });
 });
 
-// router.put("/api/burger/:id", function (req, res) {
-//   burger.update("burgers", "devoured", req.params.id, function (result) {
-//     if (result.changedRows === 0) {
-//       return res.status(404).end();
-//     }
-//     res.status(200).end();
-//   });
-// });
+router.put("/api/burger/:id", function (req, res) {
+  db.burgers
+    .update(
+      {
+        devoured: true,
+      },
+      {
+        where: { id: req.params.id },
+      }
+    )
+    .then(function () {
+      res.status(200).end();
+    });
+});
 
-// router.delete("/api/burger/:id", function (req, res) {
-//   burger.delete("burgers", req.params.id, function (result) {
-//     res.status(200).end();
-//   });
-// });
+router.delete("/api/burger/:id", function (req, res) {
+  db.burgers
+    .destroy({
+      where: { id: req.params.id },
+    })
+    .then(function () {
+      res.status(200).end();
+    });
+});
 module.exports = router;
