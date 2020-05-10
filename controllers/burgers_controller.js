@@ -20,7 +20,7 @@ router.get("/", function (req, res) {
     var resData = [];
     for (row of result) {
       //  resData.push(row.Customers);
-      console.log(row.Customers);
+
       for (row1 of row.Customers) {
         resData.push(row1.dataValues);
       }
@@ -32,9 +32,13 @@ router.get("/", function (req, res) {
 router.post("/api/burger", function (req, res) {
   db.Burgers.create({
     burger_name: req.body.newburger,
-  }).then(function (result) {
-    res.status(200).end();
-  });
+  })
+    .then(function (result) {
+      res.send(true);
+    })
+    .catch(function () {
+      res.send(false);
+    });
 });
 
 router.put("/api/burger/:id", function (req, res) {
@@ -50,9 +54,14 @@ router.put("/api/burger/:id", function (req, res) {
       name: req.body.name,
       burger_name: req.body.burger_name,
       BurgerId: req.body.BurgerId,
-    }).then(function () {
-      res.status(200).end();
-    });
+    })
+      .then(function () {
+        res.send(true);
+      })
+      .catch(function (err) {
+        // if there is doublicates in customers table
+        res.send(false);
+      });
   });
 });
 

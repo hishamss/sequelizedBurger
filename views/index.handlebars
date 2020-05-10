@@ -57,10 +57,14 @@
             <form class="form-inline justify-content-center" id="addburger">
                 <div class="form-group mr-2">
                     <input id="newburger" type="text" class="form-control" placeholder="Add Burger to Devour"
-                        autocomplete="off">
+                        autocomplete="off" autofocus>
                 </div>
                 <button type="submit" class="btn btn-primary addbtn"><strong>Add</strong></button>
             </form>
+            <br>
+            <div class="text-center" id="InvalidInput" style="color:red;">
+                Invalid Input
+            </div>
             <br>
             <div class="text-center legends">
                 <i class="fas fa-utensils"></i>
@@ -83,8 +87,9 @@
                     <br>
                     <div class="form-group text-center">
                         <input class="form-control" type="text" id="customerName" placeholder="Devoured By"
-                            autocomplete="off">
+                            autocomplete="off" autofocus>
                         <button class="btn btn-primary devour"><strong>Submit</strong></button>
+                        <p id="errMessage" style="color:red;">This person already ate this burger!!!/Invalid Input</p>
                     </div>
 
                 </div>

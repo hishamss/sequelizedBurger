@@ -1,3 +1,4 @@
+$("#InvalidInput").hide();
 $("#addburger").on("submit", function (event) {
   event.preventDefault();
   var postobj = {
@@ -7,13 +8,18 @@ $("#addburger").on("submit", function (event) {
     type: "POST",
     data: postobj,
   }).then(function (data) {
-    location.reload();
+    if (data) {
+      location.reload();
+    } else {
+      $("#InvalidInput").show();
+    }
   });
 });
 $(".customer").on("click", function () {
   IdToDevour = $(this).data("id");
   DevouredBurger = $("#" + IdToDevour + "> p").text();
   $("#customerName").val("");
+  $("#errMessage").hide();
   $(".modal").show();
 });
 
@@ -31,17 +37,21 @@ $(".devour").on("click", function () {
   $.ajax("/api/burger/" + IdToDevour, {
     type: "PUT",
     data: toPostObj,
-  }).then(function () {
-    console.log("updated");
-    $("#" + IdToDevour).remove();
-    $(".devourDiv").append(
-      '<div><i class="fas fa-hamburger"></i>&nbsp<p style="display: inline-block;">' +
-        DevouredBurger +
-        "(Eaten by " +
-        Nameof +
-        ")</p></div>"
-    );
-    $(".modal").hide();
+  }).then(function (res) {
+    // if the response is false, means the the same person trying to eat the same burger
+    if (!res) {
+      $("#errMessage").show();
+    } else {
+      $("#" + IdToDevour).remove();
+      $(".devourDiv").append(
+        '<div><i class="fas fa-hamburger"></i>&nbsp<p style="display: inline-block;">' +
+          DevouredBurger +
+          "(Eaten by " +
+          Nameof +
+          ")</p></div>"
+      );
+      $(".modal").hide();
+    }
   });
 });
 
@@ -50,7 +60,6 @@ $(".remove").on("click", function () {
   $.ajax("/api/burger/" + id, {
     type: "DELETE",
   }).then(function () {
-    console.log("Deleted");
     $("#" + id).remove();
   });
 });
