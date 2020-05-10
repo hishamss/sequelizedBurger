@@ -26,6 +26,7 @@ $(".devour").on("click", function () {
   var toPostObj = {
     name: Nameof,
     burger_name: DevouredBurger,
+    BurgerId: IdToDevour,
   };
   $.ajax("/api/burger/" + IdToDevour, {
     type: "PUT",

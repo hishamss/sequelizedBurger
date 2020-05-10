@@ -1,8 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-  var Burger = sequelize.define(
-    "burgers",
+  var Burgers = sequelize.define(
+    "Burgers",
     {
-      burger_name: DataTypes.STRING,
+      burger_name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       devoured: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -10,7 +13,14 @@ module.exports = function (sequelize, DataTypes) {
     },
     {
       timestamps: false,
+      freezeTableName: true,
     }
   );
-  return Burger;
+
+  Burgers.associate = function (models) {
+    Burgers.hasMany(models.Customers, {
+      onDelete: "cascade",
+    });
+  };
+  return Burgers;
 };

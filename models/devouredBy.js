@@ -1,8 +1,11 @@
 module.exports = function (sequelize, DataTypes) {
-  var customers = sequelize.define(
-    "customers",
+  var Customers = sequelize.define(
+    "Customers",
     {
-      name: DataTypes.STRING,
+      name: {
+        type: DataTypes.STRING,
+        allowNull: false,
+      },
       burger_name: DataTypes.STRING,
     },
     {
@@ -10,5 +13,13 @@ module.exports = function (sequelize, DataTypes) {
       freezeTableName: true,
     }
   );
-  return customers;
+
+  Customers.associate = function (models) {
+    Customers.belongsTo(models.Burgers, {
+      foreignKey: {
+        allowNull: false,
+      },
+    });
+  };
+  return Customers;
 };
