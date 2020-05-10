@@ -42,27 +42,26 @@ router.post("/api/burger", function (req, res) {
 });
 
 router.put("/api/burger/:id", function (req, res) {
-  db.Burgers.update(
-    {
-      devoured: true,
-    },
-    {
-      where: { id: req.params.id },
-    }
-  ).then(function () {
-    db.Customers.create({
-      name: req.body.name,
-      burger_name: req.body.burger_name,
-      BurgerId: req.body.BurgerId,
+  db.Customers.create({
+    name: req.body.name,
+    burger_name: req.body.burger_name,
+    BurgerId: req.body.BurgerId,
+  })
+    .then(function () {
+      db.Burgers.update(
+        {
+          devoured: true,
+        },
+        {
+          where: { id: req.params.id },
+        }
+      ).then(function () {});
+      res.send(true);
     })
-      .then(function () {
-        res.send(true);
-      })
-      .catch(function (err) {
-        // if there is doublicates in customers table
-        res.send(false);
-      });
-  });
+    .catch(function (err) {
+      // if there is doublicates in customers table
+      res.send(false);
+    });
 });
 
 router.delete("/api/burger/:id", function (req, res) {
