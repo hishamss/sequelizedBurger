@@ -1,19 +1,28 @@
-# Burger
+# Sequelized Burger
 
-<h1><a href="https://burger-hss.herokuapp.com/">Website Link</a></h1>
+<h1><a href="https://sequelizedburger-hss.herokuapp.com/">Website Link</a></h1>
 
-Eat-Da-Burger: it's a burger logger with MySQL, Node, Express, Handlebars and a homemade ORM. It lets the users to enter the name of the burger he would like to devour!!.
+Eat-Da-Burger: it's a burger logger with MySQL, Node, Express, Handlebars and a Sequelize ORM. It lets the users to enter the name of the burger he would like to devour!!.
 
 <h2>Use</h2>
 <hr>
 
 1. Type the name of the burger you would like to devour.
 2. Click Add button to submit to add the burger to the DB with default devoured value of false.
-3. If you click "devour it" button, the burger will be moved to the 'Devoured Burgers' menue and it's devoured value in the DB will be set to true.
+3. If you click "devour it" button, a pop up screen will ask you to type the name of the person who is going to devour the burger then the burger will be moved to the 'Devoured Burgers' menue and it's devoured value in the DB will be set to true.
 4. Delete burger button will delete the burger from the DB and the left menu.
 5. Loading the main page will show the burgers with devoured value of false on the left menue and the burgers with devoured value of true on the right.
 
    !["App Video"](/public/assets/media/app-video.gif)
+
+<h2>User Validation</h2>
+<hr>
+
+- User cannot add empty value for burger name.
+- User cannot add empty name for the person who ate the burger.
+- Cutomer cannot eat more than one burger of the same name.
+
+  !["Validation Video"](/public/assets/media/app1-video.gif)
 
 <h2>Technology Used</h2>
 <hr>
@@ -66,6 +75,10 @@ Eat-Da-Burger: it's a burger logger with MySQL, Node, Express, Handlebars and a 
 <td>https://elements.heroku.com/addons/jawsdb</td>
 </tr>
 <tr>
+<td>Sequelize ORM</td>
+<td>https://sequelize.org/</td>
+</tr>
+<tr>
 <td>Bootstrap</td>
 <td>https://getbootstrap.com/</td>
 </tr>
@@ -94,6 +107,7 @@ Eat-Da-Burger: it's a burger logger with MySQL, Node, Express, Handlebars and a 
 <h2>Learning Points</h2>
 <hr>
 
+- Using Sequelize ORM to provide easy access to the Database.
 - Using Handlebars view engine for Express in the web server implementation
 - Using Mustache template language in the HTML code to pass data between the engine and the template.
 - Implement homemade Object Relational Mapping(ORM) as an interface between the DB and the web server.
